@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ARToolkitProject</string>
+    <string name="app_name">ARToolkit</string>
+    <string name="string_activityname">ARToolkitRakus</string>
 </resources>

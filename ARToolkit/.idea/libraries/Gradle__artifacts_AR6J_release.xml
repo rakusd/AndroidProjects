@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: artifacts:AR6J-release">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AR6J-release.aar/5d29f1ab2980fd18795055f629bcb58c/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AR6J-release.aar/5d29f1ab2980fd18795055f629bcb58c/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AR6J-release.aar/a68eefb3b06ba71151c7aa1dd63a4544/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AR6J-release.aar/a68eefb3b06ba71151c7aa1dd63a4544/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
