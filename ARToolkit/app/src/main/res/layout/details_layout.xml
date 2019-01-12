@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView android:layout_width="wrap_content"
+              style="@style/textviewStyle"
+              android:text="This application uses camera to get real life image. It looks for marker (can be seen after pressing View marker button)
+and if it spots it, then application projects a rotating 3d cube model on the marker"
+              android:layout_height="wrap_content"/>
+
+</LinearLayout>

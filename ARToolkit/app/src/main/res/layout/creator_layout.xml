@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:background="#ffffff"
+              android:layout_height="wrap_content">
+    <TextView
+            android:text="Full name: \nDamian Rakus"
+            style="@style/textviewStyle"/>
+    <TextView
+            android:text="E-mail: \nrakusd@student.mini.pw.edu.pl"
+            style="@style/textviewStyle"/>
+    <TextView
+            android:text="Github: \ngithub.com/rakusd"
+            style="@style/textviewStyle"/>
+
+</LinearLayout>
