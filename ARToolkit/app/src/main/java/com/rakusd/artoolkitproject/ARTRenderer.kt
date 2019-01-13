@@ -18,11 +18,19 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 
+
+
+
 class ARTRenderer(val context:Context) : ARRenderer() {
 
     lateinit var trackableUIDs:IntArray
     lateinit var cube:Cube
     var angle:Float=0f
+
+    var speed:Float=20f
+    var acceleration:Float = 2f
+    var time:Float=0f
+    var maxHeight:Float=100f
 
     companion object {
         class Trackable(val name:String,val height:Float)
@@ -55,7 +63,7 @@ class ARTRenderer(val context:Context) : ARRenderer() {
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
 
         shaderProgram= SimpleShaderProgram(SimpleVertexShader(),SimpleFragmentShader())
-        cube=Cube(40.0f,0.0f,0.0f,0.0f)
+        cube=Cube(40.0f,0.0f,0.0f,100.0f)
         cube.setShaderProgram(shaderProgram)
         super.onSurfaceCreated(gl, config)
     }
@@ -81,33 +89,24 @@ class ARTRenderer(val context:Context) : ARRenderer() {
                 var matrix:FloatArray=ARToolKit.getInstance().projectionMatrix
                 var modelMatrix:FloatArray=ARToolKit.getInstance().queryMarkerTransformation(i)
 
-                var model = FloatArray(16)
-                model[0]=modelMatrix[0]*cosinus+modelMatrix[1]*sinus
-                model[1]=modelMatrix[0]*(-sinus)+modelMatrix[1]*cosinus
-                model[2]=modelMatrix[2]
-                model[3]=modelMatrix[3]
-                model[4]=modelMatrix[4]*cosinus+modelMatrix[5]*sinus
-                model[5]=modelMatrix[4]*(-sinus)+modelMatrix[5]*cosinus
-                model[6]=modelMatrix[6]
-                model[7]=modelMatrix[7]
-                model[8]=modelMatrix[8]*cosinus+modelMatrix[9]*sinus
-                model[9]=modelMatrix[8]*(-sinus)+modelMatrix[9]*cosinus
-                model[10]=modelMatrix[10]
-                model[11]=modelMatrix[11]
-                model[12]=modelMatrix[12] //modelMatrix[12]*cosinus+modelMatrix[13]*sinus
-                model[13]=modelMatrix[13] //modelMatrix[12]*(-sinus)+modelMatrix[13]*cosinus
-                model[14]=modelMatrix[14]
-                model[15]=modelMatrix[15]
+                modelMatrix[0]=cosinus
+                modelMatrix[1]=sinus
+                modelMatrix[2]=0f
+                modelMatrix[4]=-sinus
+                modelMatrix[5]=cosinus
+                modelMatrix[6]=0f
 
-                //modelMatrix[0]=cosinus
-                //modelMatrix[1]=-sinus
-                //modelMatrix[2]=0f
-                //modelMatrix[4]=sinus
-                //modelMatrix[5]=cosinus
-                //modelMatrix[6]=0f
 
-                cube.draw(matrix,model)
-                //Dodac zdjecia do kostki
+                if(time>20)
+                    time%=20
+                cube=Cube(40f,0f,0f,speed*time-acceleration*time*time/2f)
+                cube.setShaderProgram(shaderProgram)
+                cube.draw(matrix,modelMatrix)
+                time++
+
+            }
+            else {
+                time=0f
             }
         }
 
